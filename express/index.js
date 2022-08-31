@@ -16,15 +16,16 @@ const rootPostDir = '../assets/posts'
 app.get('/post/:slug', function (req, res) {
   readPost(req.params.slug + '.md')
   .then(response => {
-    console.log(response)
     if (response != null) {
-      res.json({
-      post: {
-        content: response,
-        tags: "To be implemented."
+      res.json(
+      {
+        post: {
+          content: response,
+          tags: "To be implemented."
       }
     })
     } else {
+      // readPost could not read the relevant file
       res.status(404).send("Post not found.")
     }
   })
@@ -41,14 +42,41 @@ app.get('/post/:slug', function (req, res) {
  * ]
  */
 app.get('/posts', function (req, res) {
-  // ... fill in you own code ...
+  fs.readdir(rootPostDir)
+  .then(files => {
+    allPosts = Promise.all(files.map(file => readPost(file)
+      .then(content => {
+        const contentHeader = content.split("===")[1]
+        const contentTitle = contentHeader.split("\r\n")[1].slice(7)
+        const contentSlug = contentHeader.split("\r\n")[3].slice(6)
+
+        let post = {
+          title: contentTitle,
+          slug: contentSlug
+        }
+        
+        return post
+      }))
+    )
+    .then(result => {
+      //console.log(result)
+      res.json(result)
+    })
+  })
+  .catch(err => {
+    console.error(err)
+  })
 })
 
 app.listen(3000, function () {
   console.log('App listening on port 3000!')
 })
 
-// Reads the markdown content corresponding to the provided title
+/*
+* Reads the markdown content corresponding to the provided title.
+  This has been done using async await such that the app is scalable,
+  for example the blogs could be hosted on an external database.
+*/
 async function readPost(title) {
   try {
     const postData = await fs.readFile(`${rootPostDir}/${title}`)
