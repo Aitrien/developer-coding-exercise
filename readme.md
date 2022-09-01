@@ -6,7 +6,7 @@ Hi! This is my first time running both a server and client setup using React and
 
 `/express` - contains backend server API elements of the project, using Express
 
-`/react` - contains frontend client elements of the project, using React
+`/client` - contains frontend client elements of the project, using React
 
 each folder has independent node_modules folders
 
@@ -14,7 +14,7 @@ each folder has independent node_modules folders
 
 1. Install dependencies with `npm install`
 2. Run the backend server within the `/express` directory with `node ./index.js`
-3. Run the frontend client within the `/react` directory with `npm start`
+3. Run the frontend client within the `/client` directory with `npm start`
 
 ### Initial Feature Checklist
 
