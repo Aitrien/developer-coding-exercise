@@ -1,53 +1,33 @@
-# Media Suite Coding Exercise
-We’d like you to build a blogging platform!
+## Introduction
 
-This is designed as a relatively simple exercise to get some code we can talk about in our technical interview. Not all developers have code that they can share with us due to IP restrictions, and this provides a common scenario across all candidates that provides some level of objective measure.
+Hi! This is my first time running both a server and client setup using React and Express, so the blogging platform submission as of running out of time does not have a complete working frontend. I would like to return to this project once I've polished up my skills a little more to see the job done.
 
-Please spend no more than two hours on this task.  We respect your time far too much to ask for more than that.  If you don’t finish, that’s fine, we’ll talk through what you have completed.
+#### File Structure
 
-Please fork [https://github.com/mediasuitenz/developer-coding-exercise](https://github.com/mediasuitenz/developer-coding-exercise) and either email us a link to your public repo or zip up the source code and send it in.  Please don’t include any `node_modules` folders, we'll regenerate dependencies as part running the code.  If you use Django and pull in extra dependencies, then please update the `requirements.txt`.
+`/express` - contains backend server API elements of the project, using Express
 
-If we can’t figure out how to get your application running, it’s been a waste of your time, so please include any instructions we might need to launch it.
+`/react` - contains frontend client elements of the project, using React
 
-Please ask any questions you may have of your Media Suite contact. This is not a test of your ability to understand our written instructions, it really is just an opportunity to write some code.
+each folder has independent node_modules folders
 
-## The Output
-It's okay for this application to look very basic, though this is up to you. For example...
+#### Instructions
 
-### The list of posts
-![List of Posts](./posts.png)
+1. Install dependencies with `npm install`
+2. Run the backend server within the `/express` directory with `node ./index.js`
+3. Run the frontend client within the `/react` directory with `npm start`
 
-### An individual post
-![An individual post](./post.png)
-**NOTE**: The post files are in Markdown format, but they should render in the browser as html.
+#### Initial Feature Checklist
 
-## The Server
-* The `/assets/posts` folder contains text files with blog data in them. The file name is the URL slug.
-* The content of each file will be in the following format
-	```
-	===
-	Title: Blog Title
-	Author: Author Name
-	Slug: same-as-filename
-	===
-	# Markdown content will live here
-	This is some markdown paragraph text
-	```
-* Create a server API GET endpoint that returns the blog data from these files, including tags representing the most common 5 word in the article.  Tags should have stop words from a provided list and mark-up from the markdown removed.  The return data format should look like this (values are representative only):
-```
-{
-  post: {
-    content: “...blog post content...”,
-    tags: ['word1', 'word2', ...]
-  }
-}
-```
-* Create a server API GET end-point that returns the list of all blog titles, and allows you to link to the individual posts in your client.
-* Please build the server in either Express or Django.
+**Backend:**
 
-## The Client
-* The client code should consume JSON data from the API and present it as two pages: a List of Posts and an individual Post. The URL should identify the page the user is on - i.e. a refresh should return the user to the same page, not return them to an initial location.
-* The tags should only be displayed on Post page, not on the List of Posts.
-* Please build the client in a Javascript client framework - e.g. Ember, React, Vue.js etc.
-* Don’t worry about styling/making the site look good. It purely needs to demonstrate that the javascript is consuming your API and turning the json into useful content on-screen.
-* We recommend you start by building the API to provide data to the client, but leave out the tags functionality initially.  Come back and complete the tags when the rest of the application is working and if you have the time.
+1. Process blog markdowns into meaningful data structures
+2. Send JSON for individual post content
+3. Send JSON array for all posts
+
+**Frontend:**
+
+1. Fetch JSON from API
+2. Use JSON data to create Posts component
+3. Produce Posts page with all blogs
+4. Process JSON content into HTML elements
+5. Produce individual Post page
