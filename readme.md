@@ -2,7 +2,7 @@
 
 Hi! This is my first time running both a server and client setup using React and Express, so the blogging platform submission as of running out of time does not have a complete working frontend. I would like to return to this project once I've polished up my skills a little more to see the job done.
 
-#### File Structure
+### File Structure
 
 `/express` - contains backend server API elements of the project, using Express
 
@@ -10,13 +10,13 @@ Hi! This is my first time running both a server and client setup using React and
 
 each folder has independent node_modules folders
 
-#### Instructions
+### Instructions
 
 1. Install dependencies with `npm install`
 2. Run the backend server within the `/express` directory with `node ./index.js`
 3. Run the frontend client within the `/react` directory with `npm start`
 
-#### Initial Feature Checklist
+### Initial Feature Checklist
 
 **Backend:**
 
@@ -31,3 +31,15 @@ each folder has independent node_modules folders
 3. Produce Posts page with all blogs
 4. Process JSON content into HTML elements
 5. Produce individual Post page
+
+### Rough Mockups
+
+**All Posts**
+
+![posts-plan](https://user-images.githubusercontent.com/18094002/187826706-9b23e7bd-cec7-43e5-9b34-d58649cc6b34.png)
+
+**Single Post**
+
+![post-plan](https://user-images.githubusercontent.com/18094002/187826727-dc5f5cd1-9ad1-425d-8346-031e90d5cea6.png)
+
+
